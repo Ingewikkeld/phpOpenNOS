@@ -14,6 +14,7 @@ $loader->register();
 
 use phpOpenNOS\Model\Article;
 use phpOpenNOS\Model\Video;
+use phpOpenNOS\Model\Audio;
 
 class OpenNOS
 {
@@ -53,6 +54,20 @@ class OpenNOS
         }
 
         return $videos;
+    }
+
+    public function getLatestAudio($category = self::NEWS)
+    {
+        $url = 'http://open.nos.nl/v1/latest/audio/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
+        $audios = array();
+
+        $xml = $this->request($url);
+        foreach($xml->video as $audio)
+        {
+            $audios[] = Audio::fromXML($audio);
+        }
+
+        return $audios;
     }
 
     protected function request($url)
