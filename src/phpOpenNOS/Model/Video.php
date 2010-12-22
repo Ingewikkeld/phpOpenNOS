@@ -27,17 +27,17 @@ class Video extends Base
      */
     static public function fromXML(\SimpleXMLElement $xml)
     {
-        $article = new Video();
-        $article->setId((int) $xml->id);
-        $article->setTitle((string) $xml->title);
-        $article->setDescription((string) $xml->description);
-        $article->setPublished((string) $xml->published);
-        $article->setLastUpdate((string) $xml->last_update);
-        $article->setThumbnailXS((string) $xml->thumbnail_xs);
-        $article->setThumbnailS((string) $xml->thumbnail_s);
-        $article->setThumbnailM((string) $xml->thumbnail_m);
-        $article->setLink((string) $xml->link);
-        $article->setEmbedCode((string) $xml->embedcode);
+        $video = new Video();
+        $video->setId((int) $xml->id);
+        $video->setTitle((string) $xml->title);
+        $video->setDescription((string) $xml->description);
+        $video->setPublished((string) $xml->published);
+        $video->setLastUpdate((string) $xml->last_update);
+        $video->setThumbnailXS((string) $xml->thumbnail_xs);
+        $video->setThumbnailS((string) $xml->thumbnail_s);
+        $video->setThumbnailM((string) $xml->thumbnail_m);
+        $video->setLink((string) $xml->link);
+        $video->setEmbedCode((string) $xml->embedcode);
 
         $keywords = array();
         foreach($xml->keywords->keyword as $keyword)
@@ -45,8 +45,8 @@ class Video extends Base
             $keywords[] = (string) $keyword;
         }
 
-        $article->setKeywords($keywords);
+        $video->setKeywords($keywords);
 
-        return $article;
+        return $video;
     }
 }
