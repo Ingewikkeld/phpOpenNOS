@@ -2,6 +2,8 @@
 
 namespace phpOpenNOS\Model;
 
+use \Datetime;
+
 class Article
 {
     protected   $id,
@@ -242,22 +244,29 @@ class Article
      * Create an Article object from XML
      *
      * @static
-     * @param  $xml
+     * @param SimpleXMLElement $xml
      * @return phpOpenNOS\Model\Article
      */
-    static public function fromXML($xml)
+    static public function fromXML(\SimpleXMLElement $xml)
     {
         $article = new Article();
-        $article->setId($xml->id);
-        $article->setTitle($xml->title);
-        $article->setDescription($xml->description);
-        $article->setPublished($xml->published);
-        $article->setLastUpdate($xml->last_update);
-        $article->setThumbnailXS($xml->thumbnail_xs);
-        $article->setThumbnailS($xml->thumbnail_s);
-        $article->setThumbnailM($xml->thumbnail_m);
-        $article->setLink($xml->link);
-        $article->setKeywords((array)$xml->keywords);
+        $article->setId((int) $xml->id);
+        $article->setTitle((string) $xml->title);
+        $article->setDescription((string) $xml->description);
+        $article->setPublished((string) $xml->published);
+        $article->setLastUpdate((string) $xml->last_update);
+        $article->setThumbnailXS((string) $xml->thumbnail_xs);
+        $article->setThumbnailS((string) $xml->thumbnail_s);
+        $article->setThumbnailM((string) $xml->thumbnail_m);
+        $article->setLink((string) $xml->link);
+
+        $keywords = array();
+        foreach($xml->keywords->keyword as $keyword)
+        {
+            $keywords[] = (string) $keyword;
+        }
+
+        $article->setKeywords($keywords);
 
         return $article;
     }
