@@ -13,9 +13,13 @@ $loader->registerNamespaces(array(
 $loader->register();
 
 use phpOpenNOS\Model\Article;
+use phpOpenNOS\Model\Video;
 
 class OpenNOS
 {
+    const NEWS  = 'nieuws';
+    const SPORT = 'sport';
+
     protected $apikey;
 
     public function __construct($apikey)
@@ -23,9 +27,9 @@ class OpenNOS
         $this->apikey = $apikey;
     }
 
-    public function getLatestArticles()
+    public function getLatestArticles($category = self::NEWS)
     {
-        $url = 'http://open.nos.nl/v1/latest/article/key/'.$this->apikey.'/output/xml/category/nieuws/';
+        $url = 'http://open.nos.nl/v1/latest/article/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
         $articles = array();
 
         $xml = $this->request($url);
@@ -35,6 +39,20 @@ class OpenNOS
         }
 
         return $articles;
+    }
+
+    public function getLatestVideos($category = self::NEWS)
+    {
+        $url = 'http://open.nos.nl/v1/latest/video/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
+        $videos = array();
+
+        $xml = $this->request($url);
+        foreach($xml->video as $video)
+        {
+            $videos[] = Video::fromXML($video);
+        }
+
+        return $videos;
     }
 
     protected function request($url)
