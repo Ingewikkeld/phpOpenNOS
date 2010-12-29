@@ -22,12 +22,19 @@ class OpenNOS
     const SPORT = 'sport';
 
     protected $apikey;
+    protected $typeMapping = array('artikel' => 'phpOpenNOS\Model\Article', 'video' => 'phpOpenNOS\Model\Video', 'audio' => 'phpOpenNOS\Model\Audio');
 
     public function __construct($apikey)
     {
         $this->apikey = $apikey;
     }
 
+    /**
+     * Get the latest articles for the specified category
+     *
+     * @param string $category
+     * @return array
+     */
     public function getLatestArticles($category = self::NEWS)
     {
         $url = 'http://open.nos.nl/v1/latest/article/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
@@ -42,6 +49,12 @@ class OpenNOS
         return $articles;
     }
 
+    /**
+     * Get the latest videos for the specified category
+     *
+     * @param string $category
+     * @return array
+     */
     public function getLatestVideos($category = self::NEWS)
     {
         $url = 'http://open.nos.nl/v1/latest/video/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
@@ -56,6 +69,12 @@ class OpenNOS
         return $videos;
     }
 
+    /**
+     * Get the latest audio for the specified category
+     *
+     * @param string $category
+     * @return array
+     */
     public function getLatestAudio($category = self::NEWS)
     {
         $url = 'http://open.nos.nl/v1/latest/audio/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
@@ -70,6 +89,33 @@ class OpenNOS
         return $audios;
     }
 
+    /**
+     * Search for the specified search query
+     *
+     * @param string $query
+     * @return array
+     */
+    public function search($query)
+    {
+        $url = 'http://open.nos.nl/v1/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query);
+        $documents = array();
+
+        $xml = $this->request($url);
+        foreach($xml->documents->document as $document)
+        {
+            $type = $this->getType((string) $document->type);
+            $documents[] = $type::fromXML($document);
+        }
+
+        return $documents;
+    }
+
+    /**
+     * Execute a request
+     *
+     * @param string $url
+     * @return SimpleXMLElement
+     */
     protected function request($url)
     {
         $curl = curl_init();
@@ -77,6 +123,22 @@ class OpenNOS
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         return simplexml_load_string(curl_exec($curl));
+    }
+
+    /**
+     * Get the type of the document
+     *
+     * @throws Exception
+     * @param SimpleXMLElement $key
+     * @return
+     */
+    protected function getType($key)
+    {
+        if (isset($this->typeMapping[$key]))
+        {
+            return $this->typeMapping[$key];
+        }
+        throw new \Exception('Unknown document type '.$key);
     }
     
 }
