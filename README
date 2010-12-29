@@ -6,6 +6,5 @@ phpOpenNOS aims to be a ready to use library for connecting to the OpenNOS API, 
 TODO
 ====
 
-- Radio broadcasts
 - Error handling
 - TESTS!
