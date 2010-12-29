@@ -150,6 +150,40 @@ class OpenNOS
     }
 
     /**
+     * Get the Radio broadcasts for the specified period and channel (optional)
+     *
+     * @param string $startdate
+     * @param string $enddate
+     * @param string $channel
+     * @return array
+     */
+    public function getRadioBroadcast($startdate = '', $enddate = '', $channel = '')
+    {
+        $dayguides = array();
+
+        $url = 'http://open.nos.nl/v1/guide/radio/key/'.$this->apikey.'/output/xml/';
+        if (!empty($startdate) && !empty($enddate))
+        {
+            $startdate = new \DateTime($startdate);
+            $enddate = new \Datetime($enddate);
+
+            $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+        }
+        if (!empty($channel))
+        {
+            $url .= 'channel/'.$channel.'/';
+        }
+
+        $xml = $this->request($url);
+        foreach($xml->dayguide as $day)
+        {
+            $dayguides[] = Dayguide::fromXml($day);
+        }
+
+        return $dayguides;
+    }
+
+    /**
      * Execute a request
      *
      * @param string $url
