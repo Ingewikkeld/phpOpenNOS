@@ -8,11 +8,22 @@ class Video extends Base
 {
     protected $embedcode;
 
+    /**
+     * Embedcode getter method
+     *
+     * @return string
+     */
     public function getEmbedCode()
     {
         return $this->embedcode;
     }
 
+    /**
+     * Embedcode setter method
+     *
+     * @param string $embedcode
+     * @return void
+     */
     public function setEmbedCode($embedcode)
     {
         $this->embedcode = $embedcode;
