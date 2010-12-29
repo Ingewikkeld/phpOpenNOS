@@ -15,6 +15,7 @@ $loader->register();
 use phpOpenNOS\Model\Article;
 use phpOpenNOS\Model\Video;
 use phpOpenNOS\Model\Audio;
+use phpOpenNOS\Model\Dayguide;
 
 class OpenNOS
 {
@@ -22,7 +23,11 @@ class OpenNOS
     const SPORT = 'sport';
 
     protected $apikey;
-    protected $typeMapping = array('artikel' => 'phpOpenNOS\Model\Article', 'video' => 'phpOpenNOS\Model\Video', 'audio' => 'phpOpenNOS\Model\Audio');
+    protected $typeMapping = array(
+        'artikel' => 'phpOpenNOS\Model\Article',
+        'video' => 'phpOpenNOS\Model\Video',
+        'audio' => 'phpOpenNOS\Model\Audio',
+    );
 
     public function __construct($apikey)
     {
@@ -108,6 +113,40 @@ class OpenNOS
         }
 
         return $documents;
+    }
+
+    /**
+     * Get the TV broadcasts for the specified period and channel (optional)
+     * 
+     * @param string $startdate
+     * @param string $enddate
+     * @param string $channel
+     * @return array
+     */
+    public function getTvBroadcast($startdate = '', $enddate = '', $channel = '')
+    {
+        $dayguides = array();
+
+        $url = 'http://open.nos.nl/v1/guide/tv/key/'.$this->apikey.'/output/xml/';
+        if (!empty($startdate) && !empty($enddate))
+        {
+            $startdate = new \DateTime($startdate);
+            $enddate = new \Datetime($enddate);
+
+            $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+        }
+        if (!empty($channel))
+        {
+            $url .= 'channel/'.$channel.'/';
+        }
+
+        $xml = $this->request($url);
+        foreach($xml->dayguide as $day)
+        {
+            $dayguides[] = Dayguide::fromXml($day);
+        }
+
+        return $dayguides;
     }
 
     /**
