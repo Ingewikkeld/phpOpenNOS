@@ -215,7 +215,7 @@ class BaseGuide
     static public function baseFromXml($type, \SimpleXMLElement $xml)
     {
         $model = new $type();
-        $model->setId($xml->id);
+        $model->setId((string) $xml->id);
         $model->setChannelCode((string) $xml->channel_code);
         $model->setChannelIcon((string) $xml->channel_icon);
         $model->setChannelName((string) $xml->channel_name);
