@@ -130,10 +130,13 @@ class OpenNOS
         $url = 'http://open.nos.nl/v1/guide/tv/key/'.$this->apikey.'/output/xml/';
         if (!empty($startdate) && !empty($enddate))
         {
-            $startdate = new \DateTime($startdate);
-            $enddate = new \Datetime($enddate);
+            if ($this->validateDaterange($startdate, $enddate))
+            {
+                $startdate = new \DateTime($startdate);
+                $enddate = new \Datetime($enddate);
 
-            $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+                $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+            }
         }
         if (!empty($channel))
         {
@@ -167,7 +170,10 @@ class OpenNOS
             $startdate = new \DateTime($startdate);
             $enddate = new \Datetime($enddate);
 
-            $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+            if ($this->validateDaterange($startdate, $enddate))
+            {
+                $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
+            }
         }
         if (!empty($channel))
         {
@@ -212,6 +218,31 @@ class OpenNOS
             return $this->typeMapping[$key];
         }
         throw new \Exception('Unknown document type '.$key);
+    }
+
+    /**
+     * Validate the date range
+     *
+     * @throws Exception
+     * @param DateTime $startdate
+     * @param DateTime $enddate
+     * @return bool
+     */
+    protected function validateDaterange(\Datetime $startdate,\Datetime $enddate)
+    {
+        // start date has to be before end date
+        if ($startdate > $enddate)
+        {
+            throw new Exception('Start date has to be before end date');
+        }
+        // start and end date should not be more than 2 weeks apart
+        $diff = $startdate->diff($enddate, true);
+
+        if ($diff->format('%a') > 14)
+        {
+            throw new \Exception('Period can not be longer than 2 weeks');
+        }
+        return true;
     }
     
 }
