@@ -240,6 +240,4 @@ class Base
         return in_array($keyword, $this->keywords);
     }
 
-
-
 }
