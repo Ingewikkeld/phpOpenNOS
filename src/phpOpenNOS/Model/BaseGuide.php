@@ -204,6 +204,14 @@ class BaseGuide
         $this->description = $description;
     }
 
+    /**
+     * Convert XML to object
+     *
+     * @static
+     * @param string $type
+     * @param SimpleXMLElement $xml
+     * @return Tv|Radio
+     */
     static public function baseFromXml($type, \SimpleXMLElement $xml)
     {
         $model = new $type();
