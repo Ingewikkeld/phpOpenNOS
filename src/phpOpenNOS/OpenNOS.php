@@ -86,7 +86,7 @@ class OpenNOS
         $audios = array();
 
         $xml = $this->request($url);
-        foreach($xml->video as $audio)
+        foreach($xml->audio as $audio)
         {
             $audios[] = Audio::fromXML($audio);
         }
