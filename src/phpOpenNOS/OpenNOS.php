@@ -233,7 +233,7 @@ class OpenNOS
         // start date has to be before end date
         if ($startdate > $enddate)
         {
-            throw new Exception('Start date has to be before end date');
+            throw new \Exception('Start date has to be before end date');
         }
         // start and end date should not be more than 2 weeks apart
         $diff = $startdate->diff($enddate, true);
