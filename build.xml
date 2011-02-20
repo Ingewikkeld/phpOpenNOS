@@ -26,7 +26,7 @@
    <antcall target="phpmd"/>
    <antcall target="phpcpd"/>
    <antcall target="phpcs"/>
-   <antcall target="phpdoc"/>
+   <antcall target="docblox"/>
    <antcall target="phploc"/>
   </parallel>
  </target>
@@ -78,12 +78,26 @@
  </target>
 
  <!-- Generate API documentation -->
- <target name="phpdoc">
+ <!-- <target name="phpdoc">
   <exec executable="phpdoc">
    <arg line="--directory ${source}
                  --target    ${basedir}/build/api" />
   </exec>
- </target>
+ </target> -->
+
+<!-- Generate API documentation with DocBlox -->
+<target name="docblox">
+  <exec executable="docblox">
+    <arg line="parse
+               -d ${source}
+               -t ${basedir}/build/api" />
+  </exec>
+  <exec executable="docblox">
+    <arg line="transform
+               -s ${basedir}/build/api/structure.xml
+               -t ${basedir}/build/api" />
+  </exec>
+</target>
 
  <target name="phpcb">
   <exec executable="phpcb">
