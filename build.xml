@@ -77,14 +77,6 @@
   </exec>
  </target>
 
- <!-- Generate API documentation -->
- <!-- <target name="phpdoc">
-  <exec executable="phpdoc">
-   <arg line="--directory ${source}
-                 --target    ${basedir}/build/api" />
-  </exec>
- </target> -->
-
 <!-- Generate API documentation with DocBlox -->
 <target name="docblox">
   <exec executable="docblox">
