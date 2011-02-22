@@ -8,7 +8,7 @@ require_once 'src/phpOpenNOS/Model/Video.php';
 
 use phpOpenNOS\Model\Video;
 
-class VideoTest extends \PHPUnit_Framework_Testcase
+class VideoTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmbedCode()
     {

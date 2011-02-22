@@ -7,7 +7,7 @@ require_once 'src/phpOpenNOS/Model/Tv.php';
 
 use phpOpenNOS\Model\Dayguide;
 
-class DayguideTest extends \PHPUnit_Framework_Testcase
+class DayguideTest extends \PHPUnit_Framework_TestCase
 {
     public function testItems()
     {

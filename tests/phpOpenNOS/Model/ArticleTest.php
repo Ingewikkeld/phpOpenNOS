@@ -7,7 +7,7 @@ require 'src/phpOpenNOS/Model/Article.php';
 
 use phpOpenNOS\Model\Article;
 
-class ArticleTest extends \PHPUnit_Framework_Testcase
+class ArticleTest extends \PHPUnit_Framework_TestCase
 {
     public function testFromXML()
     {

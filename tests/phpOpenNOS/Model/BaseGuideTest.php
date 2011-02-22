@@ -6,7 +6,7 @@ require_once 'src/phpOpenNOS/Model/BaseGuide.php';
 
 use phpOpenNOS\Model\BaseGuide;
 
-class BaseGuideTest extends \PHPUnit_Framework_Testcase
+class BaseGuideTest extends \PHPUnit_Framework_TestCase
 {
     protected $base;
 
