@@ -3,6 +3,7 @@
 namespace phpOpenNOS\Model;
 
 use \Datetime;
+use phpOpenNOS\Model\Base;
 
 class Video extends Base
 {
