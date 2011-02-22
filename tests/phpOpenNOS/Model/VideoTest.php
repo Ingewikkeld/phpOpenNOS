@@ -2,6 +2,7 @@
 
 namespace phpOpenNOS\Tests\Model;
 
+require_once 'src/phpOpenNOS/Model/Base.php';
 require_once 'src/phpOpenNOS/Model/BaseGuide.php';
 require_once 'src/phpOpenNOS/Model/Video.php';
 
