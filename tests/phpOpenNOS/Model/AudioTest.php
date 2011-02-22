@@ -7,7 +7,7 @@ require 'src/phpOpenNOS/Model/Audio.php';
 
 use phpOpenNOS\Model\Audio;
 
-class AudioTest extends \PHPUnit_Framework_Testcase
+class AudioTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmbedCode()
     {
