@@ -12,7 +12,9 @@ namespace phpOpenNOS\Model;
 /**
  * Base guide model class
  *
- * @author Stefan Koopmanschap <left@leftontheweb.com>
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
  */
 class BaseGuide
 {

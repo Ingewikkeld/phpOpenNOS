@@ -14,7 +14,9 @@ use phpOpenNOS\Model\Base;
 /**
  * Audio model class represents audio data coming from the API
  *
- * @author Stefan Koopmanschap <left@leftontheweb.com>
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
  */
 class Audio extends Base
 {

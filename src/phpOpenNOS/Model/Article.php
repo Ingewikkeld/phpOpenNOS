@@ -12,7 +12,9 @@ namespace phpOpenNOS\Model;
 /**
  * Article model class represents article data coming from the API
  *
- * @author Stefan Koopmanschap <left@leftontheweb.com>
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
  */
 class Article extends Base
 {
