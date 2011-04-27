@@ -105,11 +105,7 @@ class OpenNOS
      */
     public function search($query, $sort = self::SORT_SCORE)
     {
-        $url = 'http://open.nos.nl/v2/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query);
-        if (!is_null($sort))
-        {
-            $url .= '/sort/'.$sort;
-        }
+        $url = 'http://open.nos.nl/v2/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query).'/sort/'.$sort;
         $documents = array();
 
         $xml = $this->request($url);
