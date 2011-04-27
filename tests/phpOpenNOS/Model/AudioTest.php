@@ -2,8 +2,8 @@
 
 namespace phpOpenNOS\Tests\Model;
 
-require 'src/phpOpenNOS/Model/BaseGuide.php';
-require 'src/phpOpenNOS/Model/Audio.php';
+require_once 'src/phpOpenNOS/Model/BaseGuide.php';
+require_once 'src/phpOpenNOS/Model/Audio.php';
 
 use phpOpenNOS\Model\Audio;
 
