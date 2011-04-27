@@ -2,8 +2,8 @@
 
 namespace phpOpenNOS\Tests\Model;
 
-require 'src/phpOpenNOS/Model/Base.php';
-require 'src/phpOpenNOS/Model/Article.php';
+require_once 'src/phpOpenNOS/Model/Base.php';
+require_once 'src/phpOpenNOS/Model/Article.php';
 
 use phpOpenNOS\Model\Article;
 
