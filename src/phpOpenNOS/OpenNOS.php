@@ -100,9 +100,13 @@ class OpenNOS
      * @param string $query
      * @return array
      */
-    public function search($query)
+    public function search($query, $sort = null)
     {
-        $url = 'http://open.nos.nl/v1/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query);
+        $url = 'http://open.nos.nl/v2/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query);
+        if (!is_null($sort))
+        {
+            $url .= '/sort/'.$sort;
+        }
         $documents = array();
 
         $xml = $this->request($url);
