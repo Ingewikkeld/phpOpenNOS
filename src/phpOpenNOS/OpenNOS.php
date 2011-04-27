@@ -42,7 +42,7 @@ class OpenNOS
      */
     public function getLatestArticles($category = self::NEWS)
     {
-        $url = 'http://open.nos.nl/v1/latest/article/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
+        $url = 'http://open.nos.nl/v2/latest/article/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
         $articles = array();
 
         $xml = $this->request($url);
@@ -62,7 +62,7 @@ class OpenNOS
      */
     public function getLatestVideos($category = self::NEWS)
     {
-        $url = 'http://open.nos.nl/v1/latest/video/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
+        $url = 'http://open.nos.nl/v2/latest/video/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
         $videos = array();
 
         $xml = $this->request($url);
@@ -82,7 +82,7 @@ class OpenNOS
      */
     public function getLatestAudio($category = self::NEWS)
     {
-        $url = 'http://open.nos.nl/v1/latest/audio/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
+        $url = 'http://open.nos.nl/v2/latest/audio/key/'.$this->apikey.'/output/xml/category/'.$category.'/';
         $audios = array();
 
         $xml = $this->request($url);
@@ -131,14 +131,14 @@ class OpenNOS
     {
         $dayguides = array();
 
-        $url = 'http://open.nos.nl/v1/guide/tv/key/'.$this->apikey.'/output/xml/';
+        $url = 'http://open.nos.nl/v2/guide/tv/key/'.$this->apikey.'/output/xml/';
         if (!empty($startdate) && !empty($enddate))
         {
+            $startdate = new \DateTime($startdate);
+            $enddate = new \Datetime($enddate);
+
             if ($this->validateDaterange($startdate, $enddate))
             {
-                $startdate = new \DateTime($startdate);
-                $enddate = new \Datetime($enddate);
-
                 $url .= 'start/'.$startdate->format('Y-m-d').'/end/'.$enddate->format('Y-m-d').'/';
             }
         }
@@ -168,7 +168,7 @@ class OpenNOS
     {
         $dayguides = array();
 
-        $url = 'http://open.nos.nl/v1/guide/radio/key/'.$this->apikey.'/output/xml/';
+        $url = 'http://open.nos.nl/v2/guide/radio/key/'.$this->apikey.'/output/xml/';
         if (!empty($startdate) && !empty($enddate))
         {
             $startdate = new \DateTime($startdate);
