@@ -201,7 +201,15 @@ class OpenNOS
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        return simplexml_load_string(curl_exec($curl));
+        $response = curl_exec($curl);
+
+        if (substr($response, 0, 1) == '{')
+        {
+            $parsedResponse = json_decode($response);
+            throw new \Exception($parsedResponse->error->message);
+        }
+
+        return simplexml_load_string($response);
     }
 
     /**
