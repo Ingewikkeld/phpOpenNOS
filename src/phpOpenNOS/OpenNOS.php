@@ -22,6 +22,9 @@ class OpenNOS
     const NEWS  = 'nieuws';
     const SPORT = 'sport';
 
+    const SORT_SCORE = 'score';
+    const SORT_DATE = 'date';
+
     protected $apikey;
     protected $typeMapping = array(
         'artikel' => 'phpOpenNOS\Model\Article',
@@ -100,7 +103,7 @@ class OpenNOS
      * @param string $query
      * @return array
      */
-    public function search($query, $sort = null)
+    public function search($query, $sort = self::SORT_SCORE)
     {
         $url = 'http://open.nos.nl/v2/search/query/key/'.$this->apikey.'/output/xml/q/'.urlencode($query);
         if (!is_null($sort))
