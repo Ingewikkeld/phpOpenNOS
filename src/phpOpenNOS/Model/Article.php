@@ -10,7 +10,7 @@
 namespace phpOpenNOS\Model;
 
 /**
- * Article model class respresents article data coming from the API
+ * Article model class represents article data coming from the API
  *
  * @author Stefan Koopmanschap <left@leftontheweb.com>
  */
