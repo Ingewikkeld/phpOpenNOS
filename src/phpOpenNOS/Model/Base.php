@@ -2,9 +2,10 @@
 /**
  * phpOpenNOS
  *
- * @category   phpOpenNOS
- * @package    Model
- * @copyright  2010-2011 Stefan Koopmanschap
+ * @category    phpOpenNOS
+ * @package     Model
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @copyright   2010-2011 Stefan Koopmanschap
  */
 
 namespace phpOpenNOS\Model;
