@@ -80,13 +80,8 @@
 <!-- Generate API documentation with DocBlox -->
 <target name="docblox">
   <exec executable="docblox">
-    <arg line="parse
+    <arg line="project:run
                -d ${source}
-               -t ${basedir}/build/api" />
-  </exec>
-  <exec executable="docblox">
-    <arg line="transform
-               -s ${basedir}/build/api/structure.xml
                -t ${basedir}/build/api" />
   </exec>
 </target>
