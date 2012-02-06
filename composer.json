@@ -1,0 +1,17 @@
+{
+    "name": "Ingewikkeld/phpOpenNOS",
+    "description": "PHP5.3 library for accessing the NOS API",
+    "keywords": ["API", "NOS"],
+    "website": "https://github.com/Ingewikkeld/phpOpenNOS",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefan Koopmanschap",
+            "email": "stefan@ingewikkeld.net",
+            "homepage": "http://leftontheweb.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
