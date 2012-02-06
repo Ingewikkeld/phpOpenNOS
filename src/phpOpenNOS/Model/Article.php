@@ -1,14 +1,31 @@
 <?php
+/**
+ * phpOpenNOS
+ *
+ * @category    phpOpenNOS
+ * @package     Model
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @copyright   2010-2011 Stefan Koopmanschap
+ */
 
 namespace phpOpenNOS\Model;
 
+/**
+ * Article model class represents article data coming from the API
+ *
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
+ */
 class Article extends Base
 {
     /**
      * Create an Article object from XML
      *
+     * @param SimpleXMLElement $xml simpleXML element containing a single article XML
+     *
      * @static
-     * @param SimpleXMLElement $xml
+     *
      * @return phpOpenNOS\Model\Article
      */
     static public function fromXML(\SimpleXMLElement $xml)

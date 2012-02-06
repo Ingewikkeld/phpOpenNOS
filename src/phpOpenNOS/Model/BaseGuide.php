@@ -1,7 +1,22 @@
 <?php
+/**
+ * phpOpenNOS
+ *
+ * @category    phpOpenNOS
+ * @package     Model
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @copyright   2010-2011 Stefan Koopmanschap
+ */
 
 namespace phpOpenNOS\Model;
 
+/**
+ * Base guide model class
+ *
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
+ */
 class BaseGuide
 {
     protected   $id,
@@ -26,7 +41,9 @@ class BaseGuide
 
     /**
      * Set the ID
-     * @param integer $id
+     *
+     * @param integer $id ID of the item
+     *
      * @return void
      */
     public function setId($id)
@@ -47,7 +64,8 @@ class BaseGuide
     /**
      * Set the channel icon URL
      *
-     * @param string $channel_icon
+     * @param string $channel_icon URL of the channel icon
+     *
      * @return void
      */
     public function setChannelIcon($channel_icon)
@@ -68,7 +86,8 @@ class BaseGuide
     /**
      * Set the channel code
      *
-     * @param string $channel_code
+     * @param string $channel_code Code of the channel
+     *
      * @return void
      */
     public function setChannelCode($channel_code)
@@ -89,7 +108,8 @@ class BaseGuide
     /**
      * Set the channel name
      *
-     * @param string $channel_name
+     * @param string $channel_name Name of the channel
+     *
      * @return void
      */
     public function setChannelName($channel_name)
@@ -100,7 +120,8 @@ class BaseGuide
     /**
      * Get the start time in the specified format
      *
-     * @param string $format
+     * @param string $format Format in which to output the start time
+     *
      * @return string
      */
     public function getStarttime($format)
@@ -111,7 +132,8 @@ class BaseGuide
     /**
      * Set the starttime
      *
-     * @param string $starttime
+     * @param string $starttime Start time for the item
+     *
      * @return void
      */
     public function setStarttime($starttime)
@@ -122,7 +144,8 @@ class BaseGuide
     /**
      * Get the end time in the specified format
      *
-     * @param string $format
+     * @param string $format Format in which to output the end time
+     *
      * @return string
      */
     public function getEndtime($format)
@@ -133,7 +156,8 @@ class BaseGuide
     /**
      * Set the endtime
      *
-     * @param string $endtime
+     * @param string $endtime End time for the item
+     *
      * @return void
      */
     public function setEndtime($endtime)
@@ -154,7 +178,8 @@ class BaseGuide
     /**
      * Set the genre
      *
-     * @param string $genre
+     * @param string $genre Genre for the item
+     *
      * @return void
      */
     public function setGenre($genre)
@@ -175,7 +200,8 @@ class BaseGuide
     /**
      * Set the title
      *
-     * @param string $title
+     * @param string $title Title for the item
+     *
      * @return void
      */
     public function setTitle($title)
@@ -196,7 +222,8 @@ class BaseGuide
     /**
      * Set the description
      *
-     * @param string $description
+     * @param string $description Description for the item
+     *
      * @return void
      */
     public function setDescription($description)
@@ -207,9 +234,11 @@ class BaseGuide
     /**
      * Convert XML to object
      *
+     * @param string            $type Type of the item
+     * @param SimpleXMLElement  $xml  SimpleXML element containing the data for a single item
+     *
      * @static
-     * @param string $type
-     * @param SimpleXMLElement $xml
+     *
      * @return Tv|Radio
      */
     static public function baseFromXml($type, \SimpleXMLElement $xml)

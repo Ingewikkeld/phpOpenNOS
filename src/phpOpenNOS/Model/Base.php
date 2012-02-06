@@ -1,9 +1,24 @@
 <?php
+/**
+ * phpOpenNOS
+ *
+ * @category    phpOpenNOS
+ * @package     Model
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @copyright   2010-2011 Stefan Koopmanschap
+ */
 
 namespace phpOpenNOS\Model;
 
 use \Datetime;
 
+/**
+ * Base model class
+ *
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
+ */
 class Base
 {
     protected   $id,
@@ -30,7 +45,8 @@ class Base
     /**
      * Set the ID
      *
-     * @param int $id
+     * @param int $id ID of the item
+     *
      * @return void
      */
     public function setId($id)
@@ -51,7 +67,8 @@ class Base
     /**
      * Set the title
      *
-     * @param string $title
+     * @param string $title Title of the item
+     *
      * @return void
      */
     public function setTitle($title)
@@ -72,7 +89,8 @@ class Base
     /**
      * Set the description
      *
-     * @param string $description
+     * @param string $description Description of the item
+     *
      * @return void
      */
     public function setDescription($description)
@@ -83,7 +101,8 @@ class Base
     /**
      * Get the published date in the specified format
      *
-     * @param string $format
+     * @param string $format Format in which to get the published date
+     *
      * @return string
      */
     public function getPublished($format)
@@ -94,7 +113,8 @@ class Base
     /**
      * Set the published date
      *
-     * @param string $published
+     * @param string $published Published date for the item
+     *
      * @return void
      */
     public function setPublished($published)
@@ -105,7 +125,8 @@ class Base
     /**
      * Get the last update date in the specified format
      *
-     * @param string $format
+     * @param string $format Format in which to get the update date
+     *
      * @return string
      */
     public function getLastUpdate($format)
@@ -116,7 +137,8 @@ class Base
     /**
      * Set the last update date
      *
-     * @param string $last_update
+     * @param string $last_update Late update date for the item
+     *
      * @return void
      */
     public function setLastUpdate($last_update)
@@ -137,7 +159,8 @@ class Base
     /**
      * Set the extra small thumbnail URL
      *
-     * @param string $thumbnail_xs
+     * @param string $thumbnail_xs URL of the extra small thumbnail for the item
+     *
      * @return void
      */
     public function setThumbnailXS($thumbnail_xs)
@@ -158,7 +181,8 @@ class Base
     /**
      * Set the small thumbnail URL
      *
-     * @param string $thumbnail_s
+     * @param string $thumbnail_s URL of the small thumbnail for the item
+     *
      * @return void
      */
     public function setThumbnailS($thumbnail_s)
@@ -179,7 +203,8 @@ class Base
     /**
      * Set the medium thumbnail URL
      *
-     * @param string $thumbnail_m
+     * @param string $thumbnail_m URL of the medium thumbnail for the item
+     *
      * @return void
      */
     public function setThumbnailM($thumbnail_m)
@@ -200,7 +225,8 @@ class Base
     /**
      * Set the link
      *
-     * @param string $link
+     * @param string $link Link for the item
+     *
      * @return void
      */
     public function setLink($link)
@@ -221,7 +247,8 @@ class Base
     /**
      * Set the keywords
      *
-     * @param array $keywords
+     * @param array $keywords Keywords for the item
+     *
      * @return void
      */
     public function setKeywords(array $keywords)
@@ -232,7 +259,8 @@ class Base
     /**
      * Check if the article has the specified keyword
      *
-     * @param string $keyword
+     * @param string $keyword Keyword to check
+     *
      * @return bool
      */
     public function hasKeyword($keyword)

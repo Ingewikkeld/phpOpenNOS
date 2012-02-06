@@ -1,9 +1,24 @@
 <?php
+/**
+ * phpOpenNOS
+ *
+ * @category    phpOpenNOS
+ * @package     Model
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @copyright   2010-2011 Stefan Koopmanschap
+ */
 
 namespace phpOpenNOS\Model;
 
 use phpOpenNOS\Model\Base;
 
+/**
+ * Audio model class represents audio data coming from the API
+ *
+ * @author      Stefan Koopmanschap <left@leftontheweb.com>
+ * @category    phpOpenNOS
+ * @package     Model
+ */
 class Audio extends Base
 {
     protected $embedcode;
@@ -21,7 +36,8 @@ class Audio extends Base
     /**
      * Embedcode setter method
      *
-     * @param string $embedcode
+     * @param string $embedcode HTML code for embedding the audio
+     *
      * @return void
      */
     public function setEmbedCode($embedcode)
@@ -32,8 +48,10 @@ class Audio extends Base
     /**
      * Create an Audio object from XML
      *
+     * @param SimpleXMLElement $xml simpleXML element containing a single audio XML
+     *
      * @static
-     * @param SimpleXMLElement $xml
+     *
      * @return phpOpenNOS\Model\Audio
      */
     static public function fromXML(\SimpleXMLElement $xml)
