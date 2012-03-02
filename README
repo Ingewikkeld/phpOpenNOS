@@ -3,6 +3,8 @@ phpOpenNOS
 
 phpOpenNOS aims to be a ready to use library for connecting to the OpenNOS API, a REST API by dutch public broadcasting company NOS. More information is available at http://open.nos.nl/
 
+PHP5.4 has not yet been tested, but should in theory work fine.
+
 TODO
 ====
 
